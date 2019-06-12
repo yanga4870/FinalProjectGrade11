@@ -4,16 +4,6 @@ from Map import *
 from Paintings import *
 from Player import *
 from Button import *
-pygame.mixer.init()
-#Load assortment of images to be randomally put on paintings
-
-pygame.mixer.music.load("Audio/Alert theme.mp3")
-
-health=5
-Notification=pygame.image.load("Graphics/Game Images/Notification.png")
-Night_vision=pygame.transform.scale(pygame.image.load("Graphics/Game Images/Night Vision Scope.png"),(700,700))#Adds night vision effect
-#Side note: Might need to be more transparent or blit images on top of this as painting frame colors are hard to see
-
 #for printing end
 def printscore():
     generate_text("$"+str(player2_score),(WIDTH/2,400),(255,0,0),font1)
@@ -44,11 +34,13 @@ def load_image(image,postion,diveded_scale):
 
 def create_walls():
     global door
+    Wall(0, 0, 32 * 32, 32, walls_sprites)
+    Wall(0, 0, 32, 32 * 32, walls_sprites)
     Wall(32 * 31, 0, 32, 32 * 32, walls_sprites)
-    Wall(0, 0, 32*32, 32, walls_sprites)
-    #Wall(29 * 32, 27 * 32, 32*2, 32*2, tiles1, "Graphics/Game Images/Chair.png")
-    #Wall(29 * 32, (27-2) * 32, 32 * 2, 32 * 2, tiles1, "Graphics/Game Images/Checkers.png")
-    #Wall(29 * 32, (27 + 2) * 32, 32 * 2, 32 * 2, tiles1, "Graphics/Game Images/Desk.png")
+    Wall(0, 32 * 31, 32 * 32, 32, walls_sprites)
+    #Wall(29 * 32, 27 * 32, 32*2, 32*2, tiles1, "Chair.png")
+    #Wall(29 * 32, (27-2) * 32, 32 * 2, 32 * 2, tiles1, "Checkers.png")
+    #Wall(29 * 32, (27 + 2) * 32, 32 * 2, 32 * 2, tiles1, "Desk.png")
 
     lines = map.map_data.copy()
     lines.append(["." for z in range(len(lines[0]))])
@@ -311,14 +303,22 @@ def draw_screen():
     screen.blit(player2surface,(0,0))
     screen.blit(player1surface, (WIDTH//2, 0))
 
-    pygame.draw.rect(screen, (125, 124, 200), render, 1)
-    pygame.draw.rect(screen, (125, 124, 200), renderwalls, 1)
-
 WIDTH = 1000
 HEIGHT = 500
+
 player1surface=pygame.Surface([WIDTH/2,HEIGHT])#Player 1 split screen side
 player2surface=pygame.Surface([WIDTH/2,HEIGHT])#Player 2 split screen side
 pygame.init()
+pygame.mixer.init()
+#Load assortment of images to be randomally put on paintings
+
+pygame.mixer.music.load("Audio/Alert theme.mp3")
+
+health=5
+Notification=pygame.image.load("Graphics/Game Images/Notification.png")
+Night_vision=pygame.transform.scale(pygame.image.load("Graphics/Game Images/Night Vision Scope.png"),(700,700))#Adds night vision effect
+#Side note: Might need to be more transparent or blit images on top of this as painting frame colors are hard to see
+
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
 
 walls = []
