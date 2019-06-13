@@ -1,22 +1,22 @@
-import pygame, pygame.gfxdraw, random, math
+import pygame, pygame.gfxdraw, random, math#Imported modules
 
 from Map import *
 from Paintings import *
 from Player import *
 from Button import *
 #for printing end
-def printscore():
-    generate_text("$"+str(player2_score),(WIDTH/2,400),(255,0,0),font1)
+def printscore():#Prints score on endscreen
+    generate_text("$"+str(player2_score),(WIDTH/2,400),(255,0,0),font1)#calls generate_text
 
-def robberwin():
+def robberwin():#Prints robber win screen
     x=0
-    for i in range(5):
-        load_image("Graphics/EndScreen/money.png",(x+WIDTH//4,HEIGHT*2/3+HEIGHT//4),2,)
-        x=x +WIDTH/6
-    load_image("Graphics/EndScreen/frame.png", (WIDTH/2, 200),1)
-    generate_text("The robber wins!",(WIDTH/2, HEIGHT/2),(0,0,0),font1)
+    for i in range(5):#create 6 money images on the screen
+        load_image("Graphics/EndScreen/money.png",(x+WIDTH//4,HEIGHT*2/3+HEIGHT//4),2,)#call load_image
+        x=x +WIDTH/6#go to the next position
+    load_image("Graphics/EndScreen/frame.png", (WIDTH/2, 200),1)#load the frame
+    generate_text("The robber wins!",(WIDTH/2, HEIGHT/2),(0,0,0),font1)#Print the robber wins on sreen
 
-def guardwin():
+def guardwin():#Prints
     load_image("Graphics/EndScreen/bars.jpg",(WIDTH/2,HEIGHT/2),2/3)
     generate_text("The guard wins!", (WIDTH / 2, HEIGHT / 2),(30,144,255),font1)
 
