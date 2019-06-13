@@ -5,9 +5,11 @@ class Player(pygame.sprite.Sprite):
     FRICTION = 0.75
     MAX_VELOCITY = 5
     ACCELERATION = 1.5
-
+    
+    #Init function: Use parameters position
     def __init__(self, position, width, player):
         pygame.sprite.Sprite.__init__(self)
+        #Create an image surface
         self.image = pygame.Surface([width, width], pygame.SRCALPHA)
         if player == 1:
             self.image.blit(pygame.transform.scale(pygame.image.load("Graphics/Game Images/guard_image.png"), (width, width)), (0,0))
